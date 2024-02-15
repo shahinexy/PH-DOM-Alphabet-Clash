@@ -12,17 +12,17 @@
 <body class="bg-black">
     <main class="container mx-auto min-h-screen bg-[url(images/background.png)] bg-no-repeat bg-center">
         <!-- starting section  -->
-        <section class=" hidden text-center min-h-screen text-white flex flex-col space-y-8 items-center justify-center">
+        <section id="start_section" class="text-center min-h-screen text-white flex flex-col space-y-8 items-center justify-center">
             <h1 class="text-9xl font-extrabold">Alphabet clash</h1>
             <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cumque sed adipisci libero velit, nulla minus.</p>
-            <button class="text-xl font-semibold text-black bg-white rounded-md p-5">Play Now</button>
+            <button onclick="play()" class="text-xl font-semibold text-black bg-white rounded-md p-5">Play Now</button>
         </section>
         <!-- play ground section  -->
-        <section class="text-center min-h-screen text-white flex flex-col space-y-8 items-center justify-center">
+        <section id="play_ground" class="hidden text-center min-h-screen text-white flex flex-col space-y-8 items-center justify-center">
             <div class="artboard flex justify-center">
                 <div class="artboard artboard-horizontal phone-6 bg-white/70 border-[20px] border-black/70 rounded-xl flex  items-center flex-col">
                     <p class="bg-black/70 w-1/2 text-center p-1 rounded-b-lg">Lorem ipsum, dolor sit amet consectetur adipisicing.</p>
-                    <div class="alphabet text-black text-9xl font-bold">
+                    <div class="alphabet text-black text-9xl font-bold flex items-center h-full">
                         Y
                     </div>
                 </div>
@@ -65,10 +65,18 @@
             </div>
         </section>
         <!-- end section  -->
-        <section>
-
+        <section class="hidden text-center min-h-screen text-white flex flex-col space-y-8 items-center justify-center">
+            <div class="score_box text-center space-y-8 bg-black/50 p-10">
+                <h2 class="text-2xl font-semibold">Game Over!</h2>
+                <h1 class="text-7xl font-bold">SCORE: <span>0</span></h1>
+                <button class="btn bg-white text-black p-3 text-xl font-semibold rounded-md">Play Again</button>
+            </div>
         </section>
     </main>
+
+
+    <script src="js/utility.js"></script>
+    <script src="js/script.js"></script>
 </body>
 
 </html>
