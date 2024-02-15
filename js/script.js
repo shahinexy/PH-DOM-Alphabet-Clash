@@ -47,11 +47,16 @@ function continuegame(){
 
 // game start section
 function play(){
+    // hide everything and only show playground
     hideElement('start_section');
     showElement('play_ground');
     continuegame();
-
+    
     hideElement('end_game');
+
+    // reset score and life for play again
+    setElementValueById('life', 5);
+    setElementValueById('points', 0);
 }
 
 // game over section
@@ -59,5 +64,9 @@ function gameover(){
     hideElement('play_ground');
     showElement('end_game')
 
+    // game result 
+    const point = getElementValueById('points');
+    console.log(point);
+    setElementValueById('score', point)
 
 }
