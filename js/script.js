@@ -1,6 +1,12 @@
 // points and life section
 function handlekeyBoard(e){
     const playerPress = e.key;
+
+    // for end the game middle of playing.
+    if(playerPress == 'Escape'){
+        gameover()
+    }
+
     const currentAlpabet = getElementById('alphabet');    
     const activeAlphabet = currentAlpabet.innerText;
     const activeAlphabetLowercase =  activeAlphabet.toLowerCase();
@@ -57,6 +63,8 @@ function play(){
     // reset score and life for play again
     setElementValueById('life', 5);
     setElementValueById('points', 0);
+
+
 }
 
 // game over section
@@ -66,7 +74,10 @@ function gameover(){
 
     // game result 
     const point = getElementValueById('points');
-    console.log(point);
     setElementValueById('score', point)
 
+    // reset alphabet bg color
+    const currentLeter = getElementById('alphabet');
+    const current = currentLeter.innerText;
+    removeBgcolorById(current)
 }
