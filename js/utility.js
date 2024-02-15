@@ -19,8 +19,13 @@ function getRandomAlphbet(){
     const randomAlphabet = alphabet[Math.round(Math.random()*25)];
     return randomAlphabet;
 }
-// alphabet background color
+// add alphabet background color
 function setBgcolorById(elementId){
     const element = document.getElementById(elementId);
     element.classList.add('bg-orange-400');
+}
+// remove alphabet background color
+function removeBgcolorById(elementId){
+    const element = document.getElementById(elementId);
+    element.classList.remove('bg-orange-400');
 }
