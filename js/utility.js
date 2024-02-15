@@ -29,3 +29,15 @@ function removeBgcolorById(elementId){
     const element = document.getElementById(elementId);
     element.classList.remove('bg-orange-400');
 }
+// get element value
+function getElementValueById(elementId){
+    const element = document.getElementById(elementId);
+    const elementVaue = element.innerText;
+    const elementToInt = parseInt(elementVaue);
+    return elementToInt;
+}
+// set element value 
+function setElementValueById(elementId, value){
+    const element = document.getElementById(elementId);
+    element.innerText = value;
+}
