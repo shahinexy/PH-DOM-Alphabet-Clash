@@ -1,6 +1,7 @@
 // points and life section
 const audio = new Audio();
 let audioPlay = false
+const artBoard = document.getElementById('artboard');
 
 function handlekeyBoard(e) {
     if(audioPlay == false){
@@ -31,6 +32,7 @@ function handlekeyBoard(e) {
         removeBgcolorById(activeAlphabetLowercase)
         continuegame()
 
+        // right press sound
         audio.src = 'audio/right.mp3';
         audio.play()
     }
@@ -49,8 +51,13 @@ function handlekeyBoard(e) {
             gameover();
         }
 
+        // wrong press sund
         audio.src = 'audio/wrong.mp3';
         audio.play()
+
+        // wrong press artBoard color change.
+        const upgreadPercent = fileDecress/5 * 100;
+        artBoard.style.background = `linear-gradient(#ffffffb3 ${upgreadPercent}%, red)`;
     }
 }
 
@@ -78,6 +85,9 @@ function play() {
     setElementValueById('points', 0);
 
     audioPlay = true;
+    
+    // reset artboard bg
+    artBoard.style.background = `linear-gradient(#ffffffb3 100%, red)`;
 }
 
 // game over section
@@ -95,5 +105,4 @@ function gameover() {
     removeBgcolorById(current)
 
     audioPlay = false;
-
 }
