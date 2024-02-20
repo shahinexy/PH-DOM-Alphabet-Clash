@@ -1,16 +1,23 @@
 // points and life section
-function handlekeyBoard(e){
+const audio = new Audio();
+let audioPlay = false
+
+function handlekeyBoard(e) {
+    if(audioPlay == false){
+        return;
+    }
+
     const playerPress = e.key;
 
     // for end the game middle of playing.
-    if(playerPress == 'Escape'){
+    if (playerPress == 'Escape') {
         gameover()
     }
 
-    const currentAlpabet = getElementById('alphabet');    
+    const currentAlpabet = getElementById('alphabet');
     const activeAlphabet = currentAlpabet.innerText;
-    const activeAlphabetLowercase =  activeAlphabet.toLowerCase();
-    if(playerPress === activeAlphabetLowercase){
+    const activeAlphabetLowercase = activeAlphabet.toLowerCase();
+    if (playerPress === activeAlphabetLowercase) {
         // const points = getElementById('points')
         // const innerPoints = points.innerText;
         // const currentpoint = parseInt(innerPoints);
@@ -20,11 +27,14 @@ function handlekeyBoard(e){
         const points = getElementValueById('points')
         const pointPlus = points + 1;
         setElementValueById('points', pointPlus);
-        
+
         removeBgcolorById(activeAlphabetLowercase)
         continuegame()
+
+        audio.src = 'audio/right.mp3';
+        audio.play()
     }
-    else{
+    else {
         // const life = getElementById('life');
         // const innerLife = life.innerText;
         // const currentLife = parseInt(innerLife);
@@ -35,16 +45,19 @@ function handlekeyBoard(e){
         const fileDecress = life - 1;
         setElementValueById('life', fileDecress);
 
-        if(fileDecress === 0){
+        if (fileDecress === 0) {
             gameover();
         }
+
+        audio.src = 'audio/wrong.mp3';
+        audio.play()
     }
 }
 
 document.addEventListener('keyup', handlekeyBoard)
 
 // game continue section
-function continuegame(){
+function continuegame() {
     const randonAlphabet = getRandomAlphbet();
     const currentAlpabet = getElementById('alphabet');
     currentAlpabet.innerText = randonAlphabet;
@@ -52,23 +65,23 @@ function continuegame(){
 }
 
 // game start section
-function play(){
+function play() {
     // hide everything and only show playground
     hideElement('start_section');
     showElement('play_ground');
     continuegame();
-    
+
     hideElement('end_game');
 
     // reset score and life for play again
     setElementValueById('life', 5);
     setElementValueById('points', 0);
 
-
+    audioPlay = true;
 }
 
 // game over section
-function gameover(){
+function gameover() {
     hideElement('play_ground');
     showElement('end_game')
 
@@ -80,4 +93,7 @@ function gameover(){
     const currentLeter = getElementById('alphabet');
     const current = currentLeter.innerText;
     removeBgcolorById(current)
+
+    audioPlay = false;
+
 }
